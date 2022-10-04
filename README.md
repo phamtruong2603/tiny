@@ -10,4 +10,4 @@ apiKey sử dụng bản open source
 
 file_picker_callback: upload data từ computer
 
-setup(trong init) tạo plugin mới
+setup(trong init) tạo plugin mớiinit) tạo plugin mới
