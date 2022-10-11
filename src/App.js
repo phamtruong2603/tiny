@@ -13,11 +13,13 @@ export default function App() {
     var match = url.match(regExp);
     return (match && match[7].length === 11) ? match[7] : false;
   }
-  
+
   return (
     <>
       <Editor
-        onInit={(evt, editor) => editorRef.current = editor}
+        onInit={(evt, editor) => {
+          return editorRef.current = editor
+        }}
         initialValue=''
         apiKey='qncahgo1xvpwopoou5vjkysx5glaxgrkxa7o71jn9tqu1d31'
         init={{
@@ -30,7 +32,6 @@ export default function App() {
               input.setAttribute('type', 'file');
               input.setAttribute('accept', 'image/*');
               input.addEventListener('change', (e) => {
-                console.log(e)
                 const file = e.target.files[0];
                 const reader = new FileReader();
                 reader.addEventListener('load', () => {
@@ -77,20 +78,14 @@ export default function App() {
                   const data = api.getData();
                   const url = youtube_parser(data.title)
                   editor.setContent(
-                    `<iframe src="https://youtube.com/embed/${url}"></iframe>`,
+                    `${editorRef.current.getContent()}
+                    <iframe src="https://youtube.com/embed/${url}"></iframe>`,
                     { format: 'html' });
-                  console.log(data.title)
                   api.close();
                 }
               });
               editor.ui.registry.addButton('YouTB', {
                 text: 'YouTB',
-                onAction: () => {
-                  openDialog();
-                }
-              });
-              editor.ui.registry.addMenuItem('YouTB', {
-                text: 'YouTB plugin',
                 onAction: () => {
                   openDialog();
                 }
@@ -107,12 +102,12 @@ export default function App() {
           plugins: [
             'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
             'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-            'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount', 'YouTB'
+            'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
           ],
           toolbar: 'undo redo | formatselect | ' +
             'bold italic forecolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent |  ' +
-            'YouTB',
+            'alignright alignjustify | bullist numlist outdent indent | media' +
+            '',
           content_style: 'body {font - family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />

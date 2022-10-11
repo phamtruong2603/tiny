@@ -1,13 +1,17 @@
 tải và sử dụng @tinymce/tinymce-react
+    - npm install @tinymce/tinymce-react
+    - import { } from '@tinymce/tinymce-react';
 
-tạo editorRef bằng useRef lưu dữ liệu bản text
+tạo editorRef bằng useRef lưu nội dung nhập vào
 
 hàm youtube_parser lấy id video
 
-dùng editor trong @tinymce/tinymce-react tạo giao diện
+dùng <Editor /> trong @tinymce/tinymce-react tạo giao diện
 
 apiKey sử dụng bản open source
+    apiKey='your-apiKey' -- dùng bên trong <Editor />
+    (lỗi invalid doman)
 
-file_picker_callback: upload data từ computer
+file_picker_callback: upload file từ trên máy tính cá nhân
 
-setup(trong init) tạo plugin mớiinit) tạo plugin mới
+setup trong init tạo plugin mới
